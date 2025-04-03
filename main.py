@@ -3,13 +3,13 @@ import random
 import re
 
 def get_days_from_today(date):
-    now = datetime.today().date()
+    now = datetime.today().date().day
     try:
-        date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+        date_obj = datetime.strptime(date, "%Y-%m-%d").date().day
     except ValueError:
         print(f"date {date} must be in format year-month-day")
         return 0
-    days_from_today = str(now - date_obj)
+    days_from_today = now - date_obj
     return days_from_today
 
 print(get_days_from_today("2025-04-6"))
