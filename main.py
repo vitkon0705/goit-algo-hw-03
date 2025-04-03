@@ -4,12 +4,19 @@ import re
 
 def get_days_from_today(date):
     now = datetime.today().date()
-    date_obj = datetime.strptime(date, "%Y-%m-%d").date()
-    return now - date_obj
+    try:
+        date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+    except ValueError:
+        print(f"date {date} must be in format year-month-day")
+        return 0
+    days_from_today = str(now - date_obj)
+    return days_from_today
 
-# print(get_days_from_today("2025-04-1"))
+print(get_days_from_today("2025-04-6"))
 
 def get_numbers_ticket(min, max, quantity):
+    if min < 1 or min >= max or max > 1000 or quantity < min or quantity > max:
+        return []
     numbers = []
     while len(numbers) < quantity:
         number = random.randint(min, max)
@@ -43,4 +50,4 @@ raw_numbers = [
 ]
 
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
-print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
+# print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
