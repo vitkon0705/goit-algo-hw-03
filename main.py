@@ -8,7 +8,7 @@ def get_days_from_today(date):
         date_obj = datetime.strptime(date, "%Y-%m-%d").date().day
     except ValueError:
         print(f"date {date} must be in format year-month-day")
-        return 0
+        return None
     days_from_today = now - date_obj
     return days_from_today
 
