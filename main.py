@@ -8,14 +8,14 @@ def get_days_from_today(date):
         date_obj = datetime.strptime(date, "%Y-%m-%d").date().day
     except ValueError:
         print(f"date {date} must be in format year-month-day")
-        return 0
+        return None
     days_from_today = now - date_obj
     return days_from_today
 
-print(get_days_from_today("2025-04-6"))
+# print(get_days_from_today("2025-04.6"))
 
 def get_numbers_ticket(min, max, quantity):
-    if min < 1 or min >= max or max > 1000 or quantity < min or quantity > max:
+    if min < 1 or min >= max or max > 1000:
         return []
     numbers = []
     while len(numbers) < quantity:
@@ -25,7 +25,7 @@ def get_numbers_ticket(min, max, quantity):
             numbers.sort()
     return numbers
 
-# print(get_numbers_ticket(1, 49, 6))
+print(get_numbers_ticket(10, 4, 6))
 
 def normalize_phone(phone_number):
     pattern = r"[\\t\s\-\(\)\\n]"
