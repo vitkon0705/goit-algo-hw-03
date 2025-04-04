@@ -15,7 +15,7 @@ def get_days_from_today(date):
 # print(get_days_from_today("2025-04.6"))
 
 def get_numbers_ticket(min, max, quantity):
-    if min < 1 or min >= max or max > 1000:
+    if min < 1 or min >= max or max > 1000 or quantity > max - min:
         return []
     numbers = []
     while len(numbers) < quantity:
@@ -25,7 +25,7 @@ def get_numbers_ticket(min, max, quantity):
             numbers.sort()
     return numbers
 
-print(get_numbers_ticket(10, 4, 6))
+print(get_numbers_ticket(4, 10, 7))
 
 def normalize_phone(phone_number):
     pattern = r"[\\t\s\-\(\)\\n]"
